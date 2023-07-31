@@ -1,19 +1,18 @@
-```markdown
 # Benzodiazepine Plasma Concentration Model
 
-## Introduction
+## Overview
 
-This Python script models the plasma concentrations of Diazepam and its metabolite over a period of 30 days. The main purpose of the project is to compare the peak concentration of Diazepam, achieved after a single dose, with the peak concentration of another Benzodiazepine.
+This Python script models the plasma concentrations of Diazepam and its metabolites over a 30-day span. The main objective is to compare the peak concentration of Diazepam, achieved post a single dosage, with the peak concentration of another Benzodiazepine. The Diazepam equivalent is calculated by summing the Diazepam concentration and the equivalent metabolite concentration.
 
-## Background
+## Context
 
-Benzodiazepines are a class of psychoactive drugs commonly used to treat anxiety, insomnia, and other related disorders. They work by enhancing the effects of a neurotransmitter called gamma-aminobutyric acid (GABA) in the brain, leading to calming and sedative effects. Diazepam is one of the most commonly prescribed Benzodiazepines.
+Benzodiazepines are a class of psychoactive drugs commonly prescribed to treat conditions like anxiety and insomnia. They function by enhancing the effects of the gamma-aminobutyric acid (GABA) neurotransmitter in the brain, thereby inducing calming and sedative effects. Diazepam is among the most frequently prescribed Benzodiazepines.
 
-The peak concentration of a drug in plasma, also known as the Cmax, represents the highest concentration achieved in the bloodstream after a single dose. It is an important pharmacokinetic parameter as it reflects the drug's rate of absorption, distribution, and elimination.
+The data used to construct the pharmacokinetic model in this script is derived from a study by J. A. S. Gamble, J. W. Dundee, and R. C. Gray titled "Plasma Diazepam Concentrations Following Prolonged Administration" published in the British Journal of Anaesthesia in 1976. Therefore, the modeled values for Diazepam and its metabolite concentrations should be reasonably accurate.
 
-## Dependencies
+## Requirements
 
-The script uses the following Python libraries:
+This script relies on the following Python libraries:
 
 - matplotlib
 - numpy
@@ -28,27 +27,26 @@ pip install matplotlib numpy
 
 The script calculates the Diazepam and metabolite concentrations in plasma over the specified duration using a pharmacokinetic model that considers the half-life of Diazepam and its metabolite. It then determines the time to reach the steady state, where the drug's input and elimination rates are balanced, leading to a stable concentration in the body.
 
-Additionally, the script performs a comparison of the peak concentration of Diazepam with that of other Benzodiazepines. The user can set the equivalent dose of the other Benzodiazepine, and the script will calculate and display the equivalent Diazepam dose required to achieve the same peak concentration.
+The script also performs a comparison of the peak concentration of Diazepam with that of other Benzodiazepines. The user can set the equivalent dose of the other Benzodiazepine, and the script will calculate and display the equivalent Diazepam dose required to achieve the same peak concentration.
 
 ## Usage
 
-1. Adjust the parameters in the script to set the desired values for parameter initialization, such as initial dose, half-lives, conversion ratios, etc.
+1. Adjust the parameters in the script to establish desired values for initial dose, half-lives, conversion ratios, and more.
 
-2. Run the script by executing the file with Python:
+2. Execute the script by running the Python file:
 
 ```
 python benzodiazepine_concentration.py
 ```
 
-3. The results will be displayed in the console, including the time of steady state for Diazepam and the time when the Diazepam equivalent reaches 5 mg. Additionally, the script will show the equivalent Diazepam dose required to achieve the peak concentration of the other Benzodiazepine.
+3. The console will display results, including the time when Diazepam reaches a steady state and when the Diazepam equivalent reduces to 5 mg. Additionally, the script will display the equivalent Diazepam dose required to achieve the peak concentration of the chosen Benzodiazepine.
 
-4. The script also plots the Diazepam and metabolite concentrations over time, allowing for visual analysis of the drug's plasma profile.
+4. The script also generates a plot of Diazepam and its metabolite concentrations over time, facilitating visual analysis of the drug's plasma profile.
 
-## Note
+## Disclaimer
 
-The accuracy of the plasma concentration values depends on the chosen parameters and the specific pharmacokinetic properties of the Benzodiazepines used. Individual variations in metabolism and other factors may also affect the results. Therefore, the script is intended for illustrative and comparative purposes only and should not be used as a substitute for professional medical advice.
+This script serves primarily illustrative and comparative purposes, and it should not be used as a substitute for professional medical advice.
 
 ## License
 
-This script is licensed under the MIT License. See the file LICENSE for more information.
-```
+This script is licensed under the MIT License. For more details, refer to the LICENSE file in this repository.
