@@ -84,10 +84,23 @@ for benzo, equivalent in benzos.items():
     equivalent_dose = peak_conc_mg * equivalent / 10
     print(f"{benzo}: {equivalent_dose:.2f} mg")
 
+# Define therapeutic and toxic ranges
+diazepam_therapeutic_range = [200, 500]
+diazepam_toxic = 1000
+n_desmethyldiazepam_therapeutic_range = [600, 1500]
+n_desmethyldiazepam_toxic = 2000
+
 # Plotting
 plt.figure(figsize=(10, 6))
 plt.plot(days, diazepam_conc, label='Diazepam')
 plt.plot(days, n_desmethyldiazepam_conc, label='N-Desmethyldiazepam')
+
+# Add lines indicating therapeutic and toxic ranges
+plt.fill_between(days, diazepam_therapeutic_range[0], diazepam_therapeutic_range[1], color='green', alpha=0.1, label='Diazepam Therapeutic Range')
+plt.axhline(diazepam_toxic, color='red', linestyle='--', label='Diazepam Toxic Level')
+plt.fill_between(days, n_desmethyldiazepam_therapeutic_range[0], n_desmethyldiazepam_therapeutic_range[1], color='blue', alpha=0.1, label='N-Desmethyldiazepam Therapeutic Range')
+plt.axhline(n_desmethyldiazepam_toxic, color='purple', linestyle='--', label='N-Desmethyldiazepam Toxic Level')
+
 plt.xlabel("Time (days)")
 plt.ylabel("Concentration (ng/ml)")
 plt.title(f"Diazepam and N-Desmethyldiazepam Concentrations Over Time")
