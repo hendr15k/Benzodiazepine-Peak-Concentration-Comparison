@@ -5,8 +5,8 @@ import numpy as np
 initial_dose = 10  # in mg
 diazepam_plateau = 700 * initial_dose / 10  # in ng/ml
 diazepam_half_life = 30 / 24  # in Tagen
-metabolite_half_life = 4  # in Tagen
-metabolite_conversion_ratio = 1  # 1:1 Umwandlung von Diazepam zu Metaboliten
+n_desmethyldiazepam_half_life = 4  # in Tagen
+n_desmethyldiazepam_conversion_ratio = 1  # 1:1 Umwandlung von Diazepam zu N-Desmethyldiazepam
 
 diazepam_duration = 1  # Diazepam Einnahme Dauer in Tagen - Anpassen wie gewünscht
 total_duration = 30  # Länge der x-Achse in Tagen - Anpassen wie gewünscht
@@ -17,7 +17,7 @@ diazepam_equivalent_ratio = 10 / diazepam_equivalent_ng_per_ml
 # Arrays erstellen
 days = np.arange(0, total_duration, 0.1)
 diazepam_conc = np.zeros(len(days))
-metabolite_conc = np.zeros(len(days))
+n_desmethyldiazepam_conc = np.zeros(len(days))
 
 # Modellierung der Konzentrationssteigerung und des Plateaus
 steady_state_reached_day = None
@@ -28,20 +28,20 @@ for i, day in enumerate(days):
     else:
         diazepam_conc[i] = diazepam_conc[i - 1] * (2 ** (-0.1 / diazepam_half_life))
 
-    metabolite_conc[i] = metabolite_conc[i - 1] + 0.05 * diazepam_conc[i] * metabolite_conversion_ratio
-    metabolite_conc[i] *= (2 ** (-0.1 / metabolite_half_life))
+    n_desmethyldiazepam_conc[i] = n_desmethyldiazepam_conc[i - 1] + 0.05 * diazepam_conc[i] * n_desmethyldiazepam_conversion_ratio
+    n_desmethyldiazepam_conc[i] *= (2 ** (-0.1 / n_desmethyldiazepam_half_life))
 
     # Ermitteln Sie den Zeitpunkt, an dem der Steady-State erreicht wird
     if steady_state_reached_day is None and day > 0 and np.abs(diazepam_conc[i] - diazepam_conc[i - 1]) < 0.01:
         steady_state_reached_day = day
 
     # Ermitteln Sie den Zeitpunkt, an dem nur noch 5 mg Diazepam-Äquivalent im Körper sind
-    if (five_mg_reached_day is None) and (day > diazepam_duration) and ((diazepam_conc[i] + metabolite_conc[i]) * diazepam_equivalent_ratio <= 5):
+    if (five_mg_reached_day is None) and (day > diazepam_duration) and ((diazepam_conc[i] + n_desmethyldiazepam_conc[i]) * diazepam_equivalent_ratio <= 5):
         five_mg_reached_day = day
 
 peak_diazepam_conc = max(diazepam_conc)
-peak_metabolite_conc = max(metabolite_conc)
-peak_conc_ng_per_ml = peak_diazepam_conc + peak_metabolite_conc
+peak_n_desmethyldiazepam_conc = max(n_desmethyldiazepam_conc)
+peak_conc_ng_per_ml = peak_diazepam_conc + peak_n_desmethyldiazepam_conc
 peak_conc_mg = peak_conc_ng_per_ml * diazepam_equivalent_ratio  # Spitzenkonzentration in mg Diazepam-Äquivalent
 
 if steady_state_reached_day is not None:
@@ -87,10 +87,10 @@ for benzo, equivalent in benzos.items():
 # Plotting
 plt.figure(figsize=(10, 6))
 plt.plot(days, diazepam_conc, label='Diazepam')
-plt.plot(days, metabolite_conc, label='Metabolite')
+plt.plot(days, n_desmethyldiazepam_conc, label='N-Desmethyldiazepam')
 plt.xlabel("Time (days)")
 plt.ylabel("Concentration (ng/ml)")
-plt.title(f"Diazepam and Metabolite Concentrations Over Time")
+plt.title(f"Diazepam and N-Desmethyldiazepam Concentrations Over Time")
 plt.legend()
 plt.grid(True)
 plt.show()
