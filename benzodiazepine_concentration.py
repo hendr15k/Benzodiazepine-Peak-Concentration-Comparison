@@ -8,10 +8,10 @@ diazepam_half_life = 30 / 24  # in Tagen
 n_desmethyldiazepam_half_life = 4  # in Tagen
 n_desmethyldiazepam_conversion_ratio = 0.578  # 1:1 Umwandlung von Diazepam zu N-Desmethyldiazepam
 
-diazepam_duration = 1  # Diazepam Einnahme Dauer in Tagen - Anpassen wie gewünscht
+diazepam_duration = 1 # Diazepam Einnahme Dauer in Tagen - Anpassen wie gewünscht
 total_duration = 30  # Länge der x-Achse in Tagen - Anpassen wie gewünscht
 
-diazepam_equivalent_ng_per_ml = 177  # 177 ng/ml entsprechen 10 mg Diazepam
+diazepam_equivalent_ng_per_ml = 125  # 125 ng/ml entsprechen 10 mg Diazepam
 diazepam_equivalent_ratio = 10 / diazepam_equivalent_ng_per_ml
 
 # Arrays erstellen
