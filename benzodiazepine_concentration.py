@@ -6,7 +6,7 @@ initial_dose = 10  # in mg
 diazepam_plateau = 700 * initial_dose / 10  # in ng/ml
 diazepam_half_life = 30 / 24  # in Tagen
 n_desmethyldiazepam_half_life = 4  # in Tagen
-n_desmethyldiazepam_conversion_ratio = 1  # 1:1 Umwandlung von Diazepam zu N-Desmethyldiazepam
+n_desmethyldiazepam_conversion_ratio = 0.578  # 1:1 Umwandlung von Diazepam zu N-Desmethyldiazepam
 
 diazepam_duration = 1  # Diazepam Einnahme Dauer in Tagen - Anpassen wie gewünscht
 total_duration = 30  # Länge der x-Achse in Tagen - Anpassen wie gewünscht
