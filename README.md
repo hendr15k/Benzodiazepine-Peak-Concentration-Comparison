@@ -1,5 +1,5 @@
 # Benzodiazepine Plasma Concentration Model
-Warning: I am currently still in the process of comparing the data with the literature, so the script does not currently provide reliable data.
+Warning: I'm currently in the process of comparing the data with the literature, hence the script is not providing reliable data at the moment. For the short-term simulation, the currently used data are calculated. However, for the long-term simulation, they are currently deviating significantly from reality.
 ## Overview
 
 This Python script models the plasma concentrations of Diazepam and its metabolites over a 30-day span. The main objective is to compare the peak concentration of Diazepam, achieved post a single dosage, with the peak concentration of another Benzodiazepine. The Diazepam equivalent is calculated by summing the Diazepam concentration and the equivalent metabolite concentration.
