@@ -25,6 +25,8 @@ pip install matplotlib numpy
 
 ## Functionality
 
+In the future, I aim to enable a more precise long-term simulation, with factors such as age, gender, and other medications taken into account. Given the complexity of this topic, it will take some time to implement these features.
+
 The script calculates the Diazepam and metabolite concentrations in plasma over the specified duration using a pharmacokinetic model that considers the half-life of Diazepam and its metabolite. It then determines the time to reach the steady state, where the drug's input and elimination rates are balanced, leading to a stable concentration in the body.
 
 The script also performs a comparison of the peak concentration of Diazepam with that of other Benzodiazepines. The user can set the equivalent dose of the other Benzodiazepine, and the script will calculate and display the equivalent Diazepam dose required to achieve the same peak concentration.
